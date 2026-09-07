@@ -92,3 +92,46 @@ function animate() {
   requestAnimationFrame(animate);
 }
 animate();
+
+// Birthday wish form — submits to Formspree, no page reload
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
+const wishForm = document.getElementById("wish-form");
+const wishStatus = document.getElementById("wish-status");
+
+wishForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  if (FORMSPREE_ENDPOINT.includes("YOUR_FORM_ID")) {
+    wishStatus.textContent = "Wish form isn't connected yet — check back soon!";
+    wishStatus.className = "wish-status error";
+    return;
+  }
+
+  const submitButton = wishForm.querySelector(".wish-submit");
+  submitButton.disabled = true;
+  wishStatus.textContent = "Sending your wish...";
+  wishStatus.className = "wish-status";
+
+  try {
+    const response = await fetch(FORMSPREE_ENDPOINT, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: new FormData(wishForm),
+    });
+
+    if (response.ok) {
+      wishStatus.textContent = "Thank you! Your wish has been sent. 🎉";
+      wishStatus.className = "wish-status success";
+      wishForm.reset();
+    } else {
+      wishStatus.textContent = "Something went wrong. Please try again.";
+      wishStatus.className = "wish-status error";
+    }
+  } catch (err) {
+    wishStatus.textContent = "Network error. Please try again.";
+    wishStatus.className = "wish-status error";
+  } finally {
+    submitButton.disabled = false;
+  }
+});

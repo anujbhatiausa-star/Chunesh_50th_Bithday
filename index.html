@@ -62,6 +62,50 @@
   </div>
 </section>
 
+<section id="wishes" class="wishes-section">
+  <h2 class="section-title">Leave a Birthday Wish</h2>
+  <p class="wishes-subtitle">Here's one to start things off</p>
+
+  <div class="wish-card starter-wish">
+    <div class="wish-card-head">
+      <div class="wish-avatar">🥂</div>
+      <span class="wish-author">A Toast to Chunesh</span>
+    </div>
+    <p class="wish-text">
+      "Here's to the man who built a life full of laughter, hard work, and
+      love for his family and friends. A warm soul who lights up every room
+      he walks into. Happy 50th, Chunesh!" 🎉
+    </p>
+  </div>
+
+  <form id="wish-form" class="wish-form">
+    <div class="wish-form-row">
+      <div class="wish-field">
+        <label for="wish-name">Your Name</label>
+        <input type="text" id="wish-name" name="name" placeholder="Full name" required>
+      </div>
+      <div class="wish-field">
+        <label for="wish-relationship">Relationship</label>
+        <select id="wish-relationship" name="relationship" required>
+          <option value="" disabled selected>Select...</option>
+          <option>Family</option>
+          <option>Friend</option>
+          <option>Colleague</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="wish-field">
+      <label for="wish-message">Your Birthday Wish</label>
+      <textarea id="wish-message" name="message" rows="4" placeholder="Write a birthday message for Chunesh..." required></textarea>
+    </div>
+    <div class="wish-form-footer">
+      <button type="submit" class="wish-submit">Send Wish ✦</button>
+    </div>
+    <p id="wish-status" class="wish-status" aria-live="polite"></p>
+  </form>
+</section>
+
 <footer class="site-footer">
   <p class="footer-name">Chunesh Bhatia</p>
   <p class="footer-line">Turning 50 &middot; September 12th</p>
